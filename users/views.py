@@ -7,5 +7,6 @@ from users.serializers import UserSerializer
 
 # Create your views here.
 class UserViewSet(viewsets.ViewSet):
+
     serializer_class = UserSerializer
     queryset = User.objects.all()
