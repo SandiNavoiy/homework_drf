@@ -16,7 +16,7 @@ class Pay(models.Model):
     pay_date = models.DateField(verbose_name='дата платежа', auto_now=True)
     course_name = models.ForeignKey(Course, on_delete=models.SET_NULL, **NULLABLE)
     lesson_name = models.ForeignKey(Lesson, on_delete=models.SET_NULL, **NULLABLE)
-    course_name = models.IntegerField(verbose_name='сумма платежа')
+    pay_sum  = models.IntegerField(verbose_name='сумма платежа')
     payment_type = models.CharField(choices=CHOICES, verbose_name='тип оплаты')
 
 
