@@ -16,6 +16,3 @@ class Course(models.Model):
         verbose_name_plural = 'курсы'
 
 
-from django.db import models
-
-# Create your models here.
