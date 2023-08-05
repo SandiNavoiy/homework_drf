@@ -1,25 +1,26 @@
 from rest_framework import serializers
-
+import datetime
 from users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    payments = serializers.SerializerMethodField()
+    pay = serializers.SerializerMethodField()
     class Meta:
         model = User
         fields = "__all__"
 
-    def get_payments(self, instance):
+    def get_pay(self, instance):
         """Добавление истории платежей """
         payments_list = []
-        if instance.payments_set.all():
-            for i in instance.payments_set.all().values_list():
+        if instance.pay_set.all():
+            for i in instance.pay_set.all().values_list():
                 pay_list = []
                 #дата
-                pay_list.append(i[1].strftime("%d/%m/%Y"))
+                pay_list.append(i[2])
                 #сумма платежа
-                pay_list.append(i[4])
+                pay_list.append(i[5])
                 #тип оплаты
+                pay_list.append(i[6])
                 payments_list.append(pay_list)
 
             return payments_list
