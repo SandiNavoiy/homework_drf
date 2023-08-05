@@ -1,0 +1,20 @@
+[
+  {
+    "model": "Course.course",
+    "pk": 1,
+    "fields": {
+      "course_name": "═хьхЎъшщ",
+      "course_description": "═хьхЎъшщ  ч√ъ",
+      "course_preview": ""
+    }
+  },
+  {
+    "model": "Course.course",
+    "pk": 2,
+    "fields": {
+      "course_name": "шёярэёъшщ",
+      "course_description": "шёярэёъшщ  ч√ъ",
+      "course_preview": ""
+    }
+  }
+]
