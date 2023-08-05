@@ -16,7 +16,7 @@ class UserSerializer(serializers.ModelSerializer):
             for i in instance.payments_set.all().values_list():
                 pay_list = []
                 #дата
-                pay_list.append(i[1])
+                pay_list.append(i[1].strftime("%d/%m/%Y"))
                 #сумма платежа
                 pay_list.append(i[4])
                 #тип оплаты
