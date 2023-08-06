@@ -6,28 +6,59 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('Lesson', '0002_lesson_course'),
+        ("Lesson", "0002_lesson_course"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Pay',
+            name="Pay",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('pay_date', models.DateField(auto_now=True, verbose_name='дата платежа')),
-                ('course_name', models.IntegerField(verbose_name='сумма платежа')),
-                ('payment_type', models.CharField(choices=[('Card', 'карта'), ('CASH', 'наличка')], verbose_name='тип оплаты')),
-                ('lesson_name', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='Lesson.lesson')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='пользователь')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "pay_date",
+                    models.DateField(auto_now=True, verbose_name="дата платежа"),
+                ),
+                ("course_name", models.IntegerField(verbose_name="сумма платежа")),
+                (
+                    "payment_type",
+                    models.CharField(
+                        choices=[("Card", "карта"), ("CASH", "наличка")],
+                        verbose_name="тип оплаты",
+                    ),
+                ),
+                (
+                    "lesson_name",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to="Lesson.lesson",
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name="пользователь",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'оплата',
-                'verbose_name_plural': 'оплаты',
+                "verbose_name": "оплата",
+                "verbose_name_plural": "оплаты",
             },
         ),
     ]

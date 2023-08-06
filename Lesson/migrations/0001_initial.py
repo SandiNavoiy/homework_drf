@@ -4,25 +4,55 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Lesson',
+            name="Lesson",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('lesson_name', models.CharField(max_length=100, verbose_name='название урока')),
-                ('lesson_description', models.TextField(blank=True, null=True, verbose_name='описание урока')),
-                ('lesson_preview', models.ImageField(blank=True, null=True, upload_to='course/', verbose_name='изображение')),
-                ('lesson_video_url', models.CharField(blank=True, max_length=255, null=True, verbose_name='ссылка на видео')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "lesson_name",
+                    models.CharField(max_length=100, verbose_name="название урока"),
+                ),
+                (
+                    "lesson_description",
+                    models.TextField(
+                        blank=True, null=True, verbose_name="описание урока"
+                    ),
+                ),
+                (
+                    "lesson_preview",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="course/",
+                        verbose_name="изображение",
+                    ),
+                ),
+                (
+                    "lesson_video_url",
+                    models.CharField(
+                        blank=True,
+                        max_length=255,
+                        null=True,
+                        verbose_name="ссылка на видео",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'урок',
-                'verbose_name_plural': 'уроки',
+                "verbose_name": "урок",
+                "verbose_name_plural": "уроки",
             },
         ),
     ]

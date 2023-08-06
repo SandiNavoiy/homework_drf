@@ -5,22 +5,26 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('Course', '0001_initial'),
-        ('pay', '0001_initial'),
+        ("Course", "0001_initial"),
+        ("pay", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='pay',
-            name='pay_sum',
-            field=models.IntegerField(default=0, verbose_name='сумма платежа'),
+            model_name="pay",
+            name="pay_sum",
+            field=models.IntegerField(default=0, verbose_name="сумма платежа"),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='pay',
-            name='course_name',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='Course.course'),
+            model_name="pay",
+            name="course_name",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="Course.course",
+            ),
         ),
     ]
