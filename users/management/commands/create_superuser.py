@@ -1,5 +1,7 @@
 from django.core.management import BaseCommand
+
 from users.models import User
+
 
 #кастомная команда для создания суперUser
 class Command(BaseCommand):

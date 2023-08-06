@@ -1,5 +1,7 @@
 from django.contrib import admin
+
 from pay.models import Pay
+
 
 @admin.register(Pay)
 class PayAdmin(admin.ModelAdmin):

@@ -1,5 +1,5 @@
 from rest_framework import generics
-from rest_framework.filters import SearchFilter, OrderingFilter
+from rest_framework.filters import OrderingFilter, SearchFilter
 
 from pay.models import Pay
 from pay.serializers import PaySerializer

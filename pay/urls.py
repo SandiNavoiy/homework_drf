@@ -4,7 +4,8 @@ from pay.apps import PayConfig
 
 app_name = PayConfig.name
 
-from pay.views import PayListAPIView, PayCreateAPIView, PayRetrieveAPIView, PayUpdateAPIView, PayDestroyAPIView
+from pay.views import (PayCreateAPIView, PayDestroyAPIView, PayListAPIView,
+                       PayRetrieveAPIView, PayUpdateAPIView)
 
 urlpatterns = [
     path('create/', PayCreateAPIView.as_view(), name='pay_create'),

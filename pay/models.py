@@ -1,6 +1,6 @@
 from django.db import models
 
-from Course.models import Course, NULLABLE
+from Course.models import NULLABLE, Course
 from Lesson.models import Lesson
 from users.models import User
 

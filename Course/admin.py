@@ -1,5 +1,7 @@
 from django.contrib import admin
+
 from Course.models import Course
+
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
