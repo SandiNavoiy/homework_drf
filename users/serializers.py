@@ -6,6 +6,7 @@ from users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """Сериализатор для пользователей  - владельца"""
     pay = serializers.SerializerMethodField()
 
     class Meta:
@@ -28,3 +29,10 @@ class UserSerializer(serializers.ModelSerializer):
 
             return payments_list
         return None
+
+
+class UserSerializerForOthers(serializers.ModelSerializer):
+    """Сериализатор для пользователей - общий"""
+    class Meta:
+        model = User
+        fields = ('email', 'avatar', 'country', 'first_name', 'last_name', )
