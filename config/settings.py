@@ -150,3 +150,4 @@ AUTH_USER_MODEL = "users.User"
 
 LOGIN_REDIRECT_URL = "/"  # редирект для автоаризации
 LOGOUT_REDIRECT_URL = "/"  # редирект для выхода из автоаризации
+#
