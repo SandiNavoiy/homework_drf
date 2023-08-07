@@ -1,6 +1,7 @@
 from django.db import models
 
 from Course.models import Course
+from config import settings
 
 NULLABLE = {"null": True, "blank": True}
 
@@ -15,6 +16,7 @@ class Lesson(models.Model):
         max_length=255, verbose_name="ссылка на видео", **NULLABLE
     )
     course = models.ForeignKey(Course, on_delete=models.CASCADE, **NULLABLE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE)
 
     def __str__(self):
         return f"{self.lesson_name} {self.lesson_description}"
