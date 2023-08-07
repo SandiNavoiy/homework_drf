@@ -12,7 +12,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         """выбор класса сериализации"""
         try:
-            if int(self.request.user.pk) == int(self.kwargs['pk']):
+            if int(self.request.user.pk) == int(self.kwargs["pk"]):
                 return UserSerializer
         except:
             return UserSerializerForOthers

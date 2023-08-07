@@ -10,6 +10,7 @@ app_name = UsersConfig.name
 router = DefaultRouter()
 router.register(r"users", UserViewSet, basename="Users")
 
-urlpatterns = [path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-               path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-               ] + router.urls
+urlpatterns = [
+    path("token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+] + router.urls

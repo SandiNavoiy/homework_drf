@@ -2,7 +2,7 @@ from rest_framework import generics
 
 from Lesson.models import Lesson
 from Lesson.serializers import LessonSerializer
-from users.permissions import IsNotModerator, IsOwnerOrModerator, IsOwner
+from users.permissions import IsNotModerator, IsOwner, IsOwnerOrModerator
 
 
 class LessonCreateAPIView(generics.CreateAPIView):
@@ -10,6 +10,7 @@ class LessonCreateAPIView(generics.CreateAPIView):
 
     serializer_class = LessonSerializer
     permission_classes = [IsNotModerator]
+
     def perform_create(self, serializer):
         """Переопределение метода perform_create для добавления пользователя созданному уроку"""
         new_lesson = serializer.save()
@@ -22,13 +23,15 @@ class LessonListAPIView(generics.ListAPIView):
 
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+    permission_classes = [IsOwnerOrModerator]
 
 
 class LessonRetrieveAPIView(generics.RetrieveAPIView):
-    """Отображение элесента"""
+    """Отображение элемента"""
 
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
+    permission_classes = [IsOwnerOrModerator]
 
 
 class LessonUpdateAPIView(generics.UpdateAPIView):
