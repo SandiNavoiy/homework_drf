@@ -1,10 +1,28 @@
-from rest_framework import permissions
+from rest_framework.permissions import BasePermission
 
 
-class IsUser(permissions.BasePermission):
+class IsOwnerOrModerator(BasePermission):
+    """Проверка прав доступа - Владелец или Модератор"""
 
-
-    def has_object_permission(self, request, view, obj):
-        if obj in request.user.courses.all() or obj in request.user.lessons.all():
+    def has_permission(self, request, view):
+        if request.user.groups.filter(name='Moderator').exists():
             return True
-        return False
+
+        return request.user == view.get_object().owner
+
+
+class IsNotModerator(BasePermission):
+    """Проверка прав доступа НЕ МОДЕРАТОР"""
+
+    def has_permission(self, request, view):
+        if request.user.groups.filter(name='Moderator').exists():
+            return False
+
+        return True
+
+
+class IsOwner(BasePermission):
+    """Проверка прав доступа ПОЛЬЗОВАТЕЛЬ"""
+
+    def has_permission(self, request, view):
+        return request.user == view.get_object().owner
