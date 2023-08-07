@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "Lesson",
     "pay",
     "django_filters",
+    "rest_framework_simplejwt",
 ]
 
 REST_FRAMEWORK = {
