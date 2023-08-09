@@ -1,6 +1,8 @@
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 from Course.models import Course
+from Course.pagination import CoursePagination
 from Course.serializers import CourseSerializer
 from users.permissions import IsNotModerator, IsOwner, IsOwnerOrModerator
 
@@ -8,6 +10,7 @@ from users.permissions import IsNotModerator, IsOwner, IsOwnerOrModerator
 class CourseViewSet(viewsets.ModelViewSet):
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
+    pagination_class = CoursePagination
 
     def perform_create(self, serializer):
         """Переопределение метода perform_create для добавления пользователя"""
@@ -23,6 +26,8 @@ class CourseViewSet(viewsets.ModelViewSet):
         # редактировать курсы может только создатель курса или модератор
         elif self.action == "update" or self.action == "partial_update":
             permission_classes = [IsOwnerOrModerator]
+        elif self.action == 'list' or self.action == 'retrieve':
+            permission_classes = [IsAuthenticated]
 
         # удалять курсы может только их создатель
         elif self.action == "destroy":

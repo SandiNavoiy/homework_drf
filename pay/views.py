@@ -2,6 +2,7 @@ from rest_framework import generics
 from rest_framework.filters import OrderingFilter, SearchFilter
 
 from pay.models import Pay
+from pay.pagination import PayPagination
 from pay.serializers import PaySerializer
 
 
@@ -16,6 +17,7 @@ class PayListAPIView(generics.ListAPIView):
 
     serializer_class = PaySerializer
     queryset = Pay.objects.all()
+    pagination_class = PayPagination
     filter_backends = [SearchFilter, OrderingFilter]
     # Фильтры
     search_fields = ["payment_type", "course_name", "lesson_name"]
