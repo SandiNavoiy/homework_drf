@@ -11,6 +11,7 @@ class CourseSerializer(serializers.ModelSerializer):
     # Добавднеие в сериализатор уроков для курса, смотри функцию get_lessons
 
     lessons = serializers.SerializerMethodField()
+    subscription = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
@@ -24,3 +25,12 @@ class CourseSerializer(serializers.ModelSerializer):
                 lesson_list.append(i[1])
             return lesson_list
         return None
+
+    def get_subscription(self, instance):
+        user = self.request.user
+        sub_all = instance.subscription.all()
+        for sub in sub_all:
+            if sub.subscriber == user:
+                return True
+
+        return False
