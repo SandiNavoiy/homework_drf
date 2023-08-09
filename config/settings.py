@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "Lesson",
     "pay",
     "django_filters",
+    "Subscription",
 ]
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),

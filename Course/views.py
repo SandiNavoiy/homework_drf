@@ -26,7 +26,7 @@ class CourseViewSet(viewsets.ModelViewSet):
         # редактировать курсы может только создатель курса или модератор
         elif self.action == "update" or self.action == "partial_update":
             permission_classes = [IsOwnerOrModerator]
-        elif self.action == 'list' or self.action == 'retrieve':
+        elif self.action == "list" or self.action == "retrieve":
             permission_classes = [IsAuthenticated]
 
         # удалять курсы может только их создатель
