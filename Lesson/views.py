@@ -10,7 +10,7 @@ class LessonCreateAPIView(generics.CreateAPIView):
     """Создание"""
 
     serializer_class = LessonSerializer
-    permission_classes = [IsNotModerator]
+    # permission_classes = [IsNotModerator]
 
     def perform_create(self, serializer):
         """Переопределение метода perform_create для добавления пользователя созданному уроку"""
