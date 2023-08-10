@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+from pay.models import Pay
 from users.models import User
 
 
@@ -24,3 +25,4 @@ class PayTestCase(APITestCase):
 
         response = self.client.post('/pay/create/', data=data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertTrue(Pay.objects.all().exists())  # нахождение в базе

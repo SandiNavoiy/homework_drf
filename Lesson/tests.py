@@ -1,6 +1,7 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+from Lesson.models import Lesson
 from users.models import User
 
 
@@ -21,4 +22,5 @@ class LessonTestCase(APITestCase):
         }
 
         response = self.client.post('/lesson/create/', data=data)
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED) # status code
+        self.assertTrue(Lesson.objects.all().exists()) # нахождение в базе
