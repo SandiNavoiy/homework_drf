@@ -10,8 +10,8 @@ class CourseSerializer(serializers.ModelSerializer):
     )
     # Добавднеие в сериализатор уроков для курса, смотри функцию get_lessons
 
-    lessons = serializers.SerializerMethodField()
-    subscription = serializers.SerializerMethodField()
+    lessons = serializers.SerializerMethodField(read_only=True)
+    subscription = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Course
