@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework.test import APITestCase
 
 from users.models import User
@@ -13,6 +14,14 @@ class CourseTestCase(APITestCase):
 
     def test_create_course(self):
             """Создание курса тест"""
-            pass
+            data = {
+
+        "course_name": "латинский",
+        "course_description": "латинский язык "
+
+    }
+
+            response = self.client.post('/course/course/', data=data)
+            self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
 

@@ -27,10 +27,10 @@ class CourseSerializer(serializers.ModelSerializer):
         return None
 
     def get_subscription(self, instance):
-        user = self.request.user
+        request = self.context.get('request')
+        user = request.user
         sub_all = instance.subscription.all()
         for sub in sub_all:
             if sub.subscriber == user:
                 return True
-
         return False
