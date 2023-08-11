@@ -39,7 +39,7 @@ class CourseTestCase(APITestCase):
             'next': None,
             'previous': None,
             'results': [
-                {'id': 3,
+                {'id': 4,
                  'course_name': 'Эскимосский язык',
                  'lessons_count': 0,
                  'lessons': None,
@@ -55,6 +55,16 @@ class CourseTestCase(APITestCase):
         self.assertEqual(
             response.json(),
             data
+        )
+
+    def test_detail_course(self):
+        """Вывод одного курса тест"""
+        response = self.client.get('/course/course/3/')
+
+
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_200_OK
         )
 
 

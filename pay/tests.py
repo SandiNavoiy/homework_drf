@@ -39,8 +39,7 @@ class PayTestCase(APITestCase):
     def test_list_pay(self):
         """Вывод всех оплат тест"""
         responce = self.client.get('/pay/list/')
-        print(responce.json())
-        print("+++++++++++++++++++++++++++")
+
         data = {
             'count': 1,
             'next': None,
@@ -50,7 +49,7 @@ class PayTestCase(APITestCase):
                  'pay_date': '2023-08-11',
                  'pay_sum': 15,
                  'payment_type': 'CASH',
-                 'user': 1,
+                 'user': self.user.id,
                  'course_name': None,
                  'lesson_name': None}
 
@@ -63,3 +62,13 @@ class PayTestCase(APITestCase):
             data
 
         )
+    def test_detail_course(self):
+        """Вывод одной оплаты тест"""
+        response = self.client.get('/pay/deteil/2/')
+
+
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_200_OK
+        )
+

@@ -48,12 +48,21 @@ class LessonTestCase(APITestCase):
                  'course': None,
                  'owner': None}
 
-        ]
+            ]
         }
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-        responce.json(),
-        data
+            response.json(),
+            data
 
-    )
+        )
+
+    def test_detail_lesson(self):
+        """Тест вывода инфрмании об одном уроке"""
+        response = self.client.get('/lesson/deteil/2/')
+
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_200_OK
+        )
