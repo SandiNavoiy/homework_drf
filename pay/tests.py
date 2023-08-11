@@ -72,14 +72,24 @@ class PayTestCase(APITestCase):
             status.HTTP_200_OK
         )
 
-    # def test_update_pay(self):
-    #     data = {
-    #         'id': 5,
-    #         # 'pay_sum': 150,
-    #         # 'pay_date': '2023-08-12'
-    #     }
-    #
-    #     response = self.client.put('/pay/update/2/', data=data)
-    #     self.assertEqual(
-    #         response.status_code,
-    #         status.HTTP_200_OK)
+    def test_update_pay(self):
+        data = {
+
+            'pay_sum': 150,
+            'pay_date': '2023-08-12',
+            'payment_type': 'CASH',
+            'user': self.user.id
+        }
+
+        response = self.client.put('/pay/update/2/', data=data)
+
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_200_OK)
+
+    def test_delete_pay(self):
+        response = self.client.delete('/pay/delete/2/')
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_204_NO_CONTENT
+        )
