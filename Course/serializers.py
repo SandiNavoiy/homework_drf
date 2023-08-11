@@ -27,7 +27,7 @@ class CourseSerializer(serializers.ModelSerializer):
         return None
 
     def get_subscription(self, instance):
-        request = self.context.get('request')
+        request = self.context.get("request")
         user = request.user
         sub_all = instance.subscription.all()
         for sub in sub_all:
