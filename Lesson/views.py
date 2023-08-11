@@ -48,4 +48,4 @@ class LessonDestroyAPIView(generics.DestroyAPIView):
     """Удаление элемента"""
 
     queryset = Lesson.objects.all()
-    permission_classes = [IsOwner]
+    # permission_classes = [IsOwner]

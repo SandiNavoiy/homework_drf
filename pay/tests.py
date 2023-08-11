@@ -12,7 +12,7 @@ class PayTestCase(APITestCase):
         self.user = User.objects.create(email='3@admin.ru', password='spartak67', is_active=True)
         self.user.save()
         self.client.force_authenticate(user=self.user)
-        self.lesson_test = Pay.objects.create(
+        self.pay_test = Pay.objects.create(
             id=2,
             pay_date='2099-08-06"',
             pay_sum=15,
@@ -62,13 +62,24 @@ class PayTestCase(APITestCase):
             data
 
         )
-    def test_detail_course(self):
+
+    def test_detail_pay(self):
         """Вывод одной оплаты тест"""
         response = self.client.get('/pay/deteil/2/')
-
 
         self.assertEqual(
             response.status_code,
             status.HTTP_200_OK
         )
 
+    # def test_update_pay(self):
+    #     data = {
+    #         'id': 5,
+    #         # 'pay_sum': 150,
+    #         # 'pay_date': '2023-08-12'
+    #     }
+    #
+    #     response = self.client.put('/pay/update/2/', data=data)
+    #     self.assertEqual(
+    #         response.status_code,
+    #         status.HTTP_200_OK)

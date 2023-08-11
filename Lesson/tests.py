@@ -34,7 +34,7 @@ class LessonTestCase(APITestCase):
     def test_list_lesson(self):
         """Вывод всех уроков тест"""
         response = self.client.get('/lesson/list/')
-        print(response.json())
+
         data = {
             'count': 1,
             'next': None,
@@ -65,4 +65,24 @@ class LessonTestCase(APITestCase):
         self.assertEqual(
             response.status_code,
             status.HTTP_200_OK
+        )
+
+    def test_update_lesson(self):
+        data = {
+            'id': 3,
+            'lesson_name': 'Урок 1',
+            'lesson_description': 'Описание тестового урока'
+        }
+
+        response = self.client.put('/lesson/update/2/', data=data)
+
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_200_OK)
+
+    def test_delete_lesson(self):
+        response = self.client.delete('/lesson/delete/2/')
+        self.assertEqual(
+            response.status_code,
+            status.HTTP_204_NO_CONTENT
         )
