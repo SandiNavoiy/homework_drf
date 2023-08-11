@@ -32,25 +32,28 @@ class CourseTestCase(APITestCase):
 
     def test_list_course(self):
         """Вывод всех курсов"""
-        responce = self.client.get('/course/course/')
+        response = self.client.get('/course/course/')
+
         data = {
             'count': 1,
             'next': None,
             'previous': None,
             'results': [
-                {'id': 15,
-                 'course': 'Frontend разработчик',
-                 'owner': 'dronramone@mail.ru',
-                 'title': 'Урок 1',
-                 'description': 'Описание тестового урока',
-                 'preview': None,
-                 'url': 'https://www.youtube.com/'}
+                {'id': 3,
+                 'course_name': 'Эскимосский язык',
+                 'lessons_count': 0,
+                 'lessons': None,
+                 'subscription': False,
+                 'course_description': 'ТЭскимосский язык',
+                 'course_preview': None,
+                 'owner': None}
+
             ]
         }
 
-        self.assertEqual(responce.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(
-            responce.json(),
+            response.json(),
             data
         )
 
