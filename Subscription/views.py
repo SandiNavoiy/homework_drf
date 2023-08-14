@@ -6,13 +6,13 @@ from Subscription.serializers import SubscriptionSerializer
 
 
 class SubscriptionCreateAPIView(generics.CreateAPIView):
-    """Создание"""
+    """Создание подписки"""
 
     serializer_class = SubscriptionSerializer
 
 
 class SubscriptionListAPIView(generics.ListAPIView):
-    """просмотр списка"""
+    """Просмотр списка подписок"""
 
     serializer_class = SubscriptionSerializer
     queryset = Subscription.objects.all()
@@ -21,20 +21,20 @@ class SubscriptionListAPIView(generics.ListAPIView):
 
 
 class SubscriptionRetrieveAPIView(generics.RetrieveAPIView):
-    """Отображение элемента"""
+    """Отображение элемента подписки """
 
     serializer_class = SubscriptionSerializer
     queryset = Subscription.objects.all()
 
 
 class SubscriptionUpdateAPIView(generics.UpdateAPIView):
-    """Изменение элемента"""
+    """Изменение элемента подписки"""
 
     serializer_class = SubscriptionSerializer
     queryset = Subscription.objects.all()
 
 
 class SubscriptionDestroyAPIView(generics.DestroyAPIView):
-    """Удаление элемента"""
+    """Удаление элемента подписки"""
 
     queryset = Subscription.objects.all()

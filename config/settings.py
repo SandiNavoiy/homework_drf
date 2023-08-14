@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
+from datetime import timedelta
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -46,6 +47,7 @@ INSTALLED_APPS = [
     "pay",
     "django_filters",
     "Subscription",
+    "drf_yasg",
 ]
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
@@ -148,4 +150,8 @@ AUTH_USER_MODEL = "users.User"
 
 LOGIN_REDIRECT_URL = "/"  # редирект для автоаризации
 LOGOUT_REDIRECT_URL = "/"  # редирект для выхода из автоаризации
-#
+# Описание времени жизни токена
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}

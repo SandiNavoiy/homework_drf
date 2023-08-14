@@ -7,6 +7,7 @@ from users.serializers import UserSerializer, UserSerializerForOthers
 
 # Create your views here.
 class UserViewSet(viewsets.ModelViewSet):
+    """Эндпоинт для подьзователей на модели viewsets.ModelViewSet"""
     serializer_class = UserSerializer
     queryset = User.objects.all()
     pagination_class = UserPagination

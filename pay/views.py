@@ -7,13 +7,13 @@ from pay.serializers import PaySerializer
 
 
 class PayCreateAPIView(generics.CreateAPIView):
-    """Создание"""
+    """Создание оплаты"""
 
     serializer_class = PaySerializer
 
 
 class PayListAPIView(generics.ListAPIView):
-    """просмотр списка"""
+    """Просмотр списка оплат"""
 
     serializer_class = PaySerializer
     queryset = Pay.objects.all()
@@ -27,20 +27,20 @@ class PayListAPIView(generics.ListAPIView):
 
 
 class PayRetrieveAPIView(generics.RetrieveAPIView):
-    """Отображение элесента"""
+    """Отображение элемента  - оплаты"""
 
     serializer_class = PaySerializer
     queryset = Pay.objects.all()
 
 
 class PayUpdateAPIView(generics.UpdateAPIView):
-    """Изменение элемента"""
+    """Изменение элемента - оплаты"""
 
     serializer_class = PaySerializer
     queryset = Pay.objects.all()
 
 
 class PayDestroyAPIView(generics.DestroyAPIView):
-    """Удаление элемента"""
+    """Удаление элемента  - оплаты"""
 
     queryset = Pay.objects.all()

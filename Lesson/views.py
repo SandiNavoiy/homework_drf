@@ -7,7 +7,7 @@ from users.permissions import IsNotModerator, IsOwner, IsOwnerOrModerator
 
 
 class LessonCreateAPIView(generics.CreateAPIView):
-    """Создание"""
+    """Создание урока"""
 
     serializer_class = LessonSerializer
     # permission_classes = [IsNotModerator]
@@ -20,7 +20,7 @@ class LessonCreateAPIView(generics.CreateAPIView):
 
 
 class LessonListAPIView(generics.ListAPIView):
-    """просмотр списка"""
+    """Просмотр списка уроков"""
 
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
@@ -29,7 +29,7 @@ class LessonListAPIView(generics.ListAPIView):
 
 
 class LessonRetrieveAPIView(generics.RetrieveAPIView):
-    """Отображение элемента"""
+    """Отображение элемента  - урока"""
 
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
@@ -37,7 +37,7 @@ class LessonRetrieveAPIView(generics.RetrieveAPIView):
 
 
 class LessonUpdateAPIView(generics.UpdateAPIView):
-    """Изменение элемента"""
+    """Изменение элемента урока"""
 
     serializer_class = LessonSerializer
     queryset = Lesson.objects.all()
@@ -45,7 +45,7 @@ class LessonUpdateAPIView(generics.UpdateAPIView):
 
 
 class LessonDestroyAPIView(generics.DestroyAPIView):
-    """Удаление элемента"""
+    """Удаление элемента - урока"""
 
     queryset = Lesson.objects.all()
     # permission_classes = [IsOwner]

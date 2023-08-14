@@ -8,6 +8,7 @@ from users.permissions import IsNotModerator, IsOwner, IsOwnerOrModerator
 
 
 class CourseViewSet(viewsets.ModelViewSet):
+    """Эндпоинт для курсов на модели viewsets.ModelViewSet"""
     serializer_class = CourseSerializer
     queryset = Course.objects.all()
     pagination_class = CoursePagination
