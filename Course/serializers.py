@@ -39,14 +39,14 @@ class CourseSerializer(serializers.ModelSerializer):
                 return True
         return False
 
-    def get_url_payments(self, course):
+    def get_payments(self, course):
         """Добавление оплаты для курса"""
         #создание продукта с именем, которое берется из имени курса ( course.course_name)
         payment = stripe.Product.create(name=course.course_name, )
         #Создание цены на продукт:
         price = stripe.Price.create(
             # сумма
-            unit_amount=int(course.price),
+            unit_amount=int(course.price*100),
             # валюта
             currency="usd",
             # привязка к продукту
@@ -56,6 +56,10 @@ class CourseSerializer(serializers.ModelSerializer):
         session = stripe.checkout.Session.create(
             # адрес после успешного платежа
             success_url="https://example.com/success",
+            # при неудаче
+            cancel_url="https://example.com/cancel",
+            # Тип платежного метода
+            payment_method_types=["card"],
             line_items=[
                 {
                     "price": price['id'],
