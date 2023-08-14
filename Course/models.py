@@ -14,6 +14,7 @@ class Course(models.Model):
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE
     )
+    price = models.FloatField(default=1000.00, verbose_name='Цена USD')
 
     def __str__(self):
         return f"{self.course_name} {self.course_description}"
