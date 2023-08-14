@@ -102,7 +102,8 @@ DATABASES = {
         "PORT": 5432,  # Порт, на котором работает сервер БД
     }
 }
-
+# Код API stripe
+STRIPE_API_KEY = str(os.getenv("STRIPE_API_KEY"))
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
