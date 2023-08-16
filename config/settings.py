@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "django_filters",
     "Subscription",
     "drf_yasg",
+    "django_celery_beat",
 ]
 REST_FRAMEWORK = {
     "DEFAULT_FILTER_BACKENDS": ("django_filters.rest_framework.DjangoFilterBackend",),
@@ -156,3 +157,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+#Настройки брокера
+CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
+CELERY_BROKER_BACKEND = "redis://127.0.0.1:6379/0"
