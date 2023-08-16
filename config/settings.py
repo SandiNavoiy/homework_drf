@@ -154,9 +154,9 @@ LOGIN_REDIRECT_URL = "/"  # редирект для автоаризации
 LOGOUT_REDIRECT_URL = "/"  # редирект для выхода из автоаризации
 # Описание времени жизни токена
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
 }
-#Настройки брокера
+# Настройки брокера
 CELERY_BROKER_URL = "redis://127.0.0.1:6379/0"
 CELERY_BROKER_BACKEND = "redis://127.0.0.1:6379/0"

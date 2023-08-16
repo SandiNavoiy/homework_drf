@@ -21,7 +21,7 @@ class SubscriptionListAPIView(generics.ListAPIView):
 
 
 class SubscriptionRetrieveAPIView(generics.RetrieveAPIView):
-    """Отображение элемента подписки """
+    """Отображение элемента подписки"""
 
     serializer_class = SubscriptionSerializer
     queryset = Subscription.objects.all()

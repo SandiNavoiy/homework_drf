@@ -5,6 +5,7 @@ from config import settings
 
 stripe.api_key = settings.STRIPE_API_KEY
 
+
 class CourseSerializer(serializers.ModelSerializer):
     # добавление поля количество уроков  через описание нового типа, и сслыкой на запрос к лесссон, суммирование
     lessons_count = serializers.IntegerField(
@@ -41,18 +42,20 @@ class CourseSerializer(serializers.ModelSerializer):
 
     def get_payments(self, course):
         """Добавление оплаты для курса"""
-        #создание продукта с именем, которое берется из имени курса ( course.course_name)
-        payment = stripe.Product.create(name=course.course_name, )
-        #Создание цены на продукт:
+        # создание продукта с именем, которое берется из имени курса ( course.course_name)
+        payment = stripe.Product.create(
+            name=course.course_name,
+        )
+        # Создание цены на продукт:
         price = stripe.Price.create(
             # сумма
-            unit_amount=int(course.price*100),
+            unit_amount=int(course.price * 100),
             # валюта
             currency="usd",
             # привязка к продукту
-            product=payment['id'],
+            product=payment["id"],
         )
-        #Создание платежной сессии
+        # Создание платежной сессии
         session = stripe.checkout.Session.create(
             # адрес после успешного платежа
             success_url="https://example.com/success",
@@ -62,7 +65,7 @@ class CourseSerializer(serializers.ModelSerializer):
             payment_method_types=["card"],
             line_items=[
                 {
-                    "price": price['id'],
+                    "price": price["id"],
                     # количество
                     "quantity": 1,
                 },
@@ -70,6 +73,5 @@ class CourseSerializer(serializers.ModelSerializer):
             # Режим платежа,(что такое не понял)
             mode="payment",
         )
-        #Возврат URL-адреса для оплаты
-        return session['url']
-
+        # Возврат URL-адреса для оплаты
+        return session["url"]
