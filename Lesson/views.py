@@ -1,12 +1,13 @@
 from datetime import timedelta
 
-from rest_framework import generics
 from django.utils import timezone
+from rest_framework import generics
+
+from Course.tasks import send_course_create, send_course_update
 from Lesson.models import Lesson
 from Lesson.pagination import LessonPagination
 from Lesson.serializers import LessonSerializer
 from users.permissions import IsNotModerator, IsOwner, IsOwnerOrModerator
-from Course.tasks import send_course_create, send_course_update
 
 
 class LessonCreateAPIView(generics.CreateAPIView):

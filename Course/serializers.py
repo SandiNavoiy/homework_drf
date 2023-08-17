@@ -1,7 +1,8 @@
-from rest_framework import serializers
 import stripe
-from Course.models import Course
+from rest_framework import serializers
+
 from config import settings
+from Course.models import Course
 
 stripe.api_key = settings.STRIPE_API_KEY
 

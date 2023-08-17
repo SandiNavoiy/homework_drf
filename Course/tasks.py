@@ -4,9 +4,9 @@ from time import timezone
 from celery import shared_task
 from django.core.mail import send_mail
 
+from config import settings
 from Course.models import Course
 from Subscription.models import Subscription
-from config import settings
 from users.models import User
 
 
@@ -30,6 +30,7 @@ def send_course_create(course_id):
     except:
         print("Ошибка отправки")
 
+
 @shared_task
 def send_course_update(course_id):
     """Задача рассылки писем при обновлении уроков  курса"""
@@ -41,7 +42,6 @@ def send_course_update(course_id):
         last_updated = course.last_updated
         current_time = timezone.now()
         if (current_time - last_updated) > timedelta(hours=4):
-
             # Перебор подпищиков
             for sub in sub_couse:
                 send_mail(
@@ -53,6 +53,8 @@ def send_course_update(course_id):
                 )
     except:
         print("Ошибка отправки")
+
+
 @shared_task
 def block_in_active_users():
     """Задача для блокирования пользователей при не активности в течении 30 дней."""

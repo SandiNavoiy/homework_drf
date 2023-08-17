@@ -1,6 +1,5 @@
-from django.utils import timezone
-
 from django.db import models
+from django.utils import timezone
 
 from config import settings
 
@@ -17,7 +16,9 @@ class Course(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, **NULLABLE
     )
     price = models.FloatField(default=1000.00, verbose_name="Цена USD")
-    last_updated = models.DateTimeField(default=timezone.now, verbose_name="последнее обновление")
+    last_updated = models.DateTimeField(
+        default=timezone.now, verbose_name="последнее обновление"
+    )
 
     def __str__(self):
         return f"{self.course_name} {self.course_description}"

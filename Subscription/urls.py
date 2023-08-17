@@ -1,13 +1,11 @@
 from django.urls import path
 
 from Subscription.apps import SubscriptionConfig
-from Subscription.views import (
-    SubscriptionCreateAPIView,
-    SubscriptionDestroyAPIView,
-    SubscriptionListAPIView,
-    SubscriptionRetrieveAPIView,
-    SubscriptionUpdateAPIView,
-)
+from Subscription.views import (SubscriptionCreateAPIView,
+                                SubscriptionDestroyAPIView,
+                                SubscriptionListAPIView,
+                                SubscriptionRetrieveAPIView,
+                                SubscriptionUpdateAPIView)
 
 app_name = SubscriptionConfig.name
 
