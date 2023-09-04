@@ -9,5 +9,9 @@
 5.Запуск сервера python manage.py runserver
 
 
-Работа с Docker:
-Собираем образ с помощью команды docker-compose build
+Работа с Docker: 
+Прежде чем начать использовать проект нужно:
+Установить на ПК пакет docker.
+my-python-app  - заменить на свое название приложения
+Собираем образ с помощью команды: docker build -t my-python-app .
+Запускаем контейнер с помощью команды: docker run my-python-app
