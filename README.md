@@ -29,9 +29,10 @@ my-python-app  - заменить на свое название приложе�
 Установите брокер Redis (sudo apt update, sudo apt install redis-server),
 и запустите его командой redis-server start
 Сборка Docker образа:
-docker-compose build (обязательно на Виндовск запустите сам Docker!)
+docker-compose build (обязательно на Windows запустите сам Docker!)
 Сделайте миграцию внутри контейнера через команду:
 docker-compose exec <имя контейнера если оно было изменено вами> python manage.py migrate
+(Например docker-compose exec app python manage.py migrate)
 
 Запуск контейнера:
 -docker-compose build -docker-compose up
