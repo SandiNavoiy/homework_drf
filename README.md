@@ -20,3 +20,21 @@ CACHES_LOCATION=redis://127.0.0.1:6379 - расположение доступа
 my-python-app  - заменить на свое название приложения
 Собираем образ с помощью команды: docker build -t my-python-app .
 Запускаем контейнер с помощью команды: docker run my-python-app
+
+
+Работа с Docker compose
+
+ВАЖНО!
+На Windows запустите подсистему WSL(или установите ее), установите в ней например Ubunty, через магазин приложений,
+Установите брокер Redis (sudo apt update, sudo apt install redis-server),
+и запустите его командой redis-server start
+Сборка Docker образа:
+docker-compose build (обязательно на Виндовск запустите сам Docker!)
+Сделайте миграцию внутри контейнера через команду:
+docker-compose exec <имя контейнера если оно было изменено вами> python manage.py migrate
+
+Запуск контейнера:
+-docker-compose build -docker-compose up
+Эти команды создадут и запустят контейнеры для Django приложения и PostgreSQL базы данных.
+Откройте браузер и перейдите по адресу http://localhost:8000, чтобы использовать запустить приложение через контейнер
+(Например запрос http://localhost:8000/course/)
