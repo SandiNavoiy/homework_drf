@@ -21,7 +21,7 @@ services:
   celery:
     build:
       context: .
-      #dockerfile: docker/celery/Dockerfile
+
     depends_on:
       - app
       - redis
